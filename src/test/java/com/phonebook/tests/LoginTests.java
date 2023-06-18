@@ -15,14 +15,19 @@ public class LoginTests extends TestBase {
 
   @Test
   public void newUserRegistrationPisitiveTest () {
+
     //click on login link
     click(By.cssSelector("[href='/login']"));
+
     //enter email
     type(By.cssSelector("[placeholder='Email']"), "koss@gmail.com");
+
 //  enter password
     type(By.cssSelector("[placeholder='Password']"), "Koss123456$");
+
     //click on registration burton
     click(By.name("login"));
+
     // assert Sign aout button
     Assert.assertTrue(isElementPresent1(By.xpath("//button[.='Sign Out']")));
   }

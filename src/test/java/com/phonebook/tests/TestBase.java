@@ -54,6 +54,7 @@ public class TestBase {
       driver.quit();
   }
 
+  //заменяем три строки из CreateAccount  на функцию.
   public void type(By locator, String text) {
     driver.findElement(locator).click();
     driver.findElement(locator).clear();
