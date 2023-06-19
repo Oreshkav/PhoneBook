@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 public class LoginTests extends TestBase {
 
   public void ensurePrecondition() {
-    if (!isElementPresent(By.cssSelector("[href='/login']")))
+    if (!isLoginLinkPresent())
     {
       driver.findElement(By.xpath("//button[.='Sign Out']")).click();
     }
@@ -17,18 +17,23 @@ public class LoginTests extends TestBase {
   public void newUserRegistrationPisitiveTest () {
 
     //click on login link
-    click(By.cssSelector("[href='/login']"));
+    clickOnLoginLink();
 
     //enter email
-    type(By.cssSelector("[placeholder='Email']"), "koss@gmail.com");
-
-//  enter password
-    type(By.cssSelector("[placeholder='Password']"), "Koss123456$");
+    fillLoginRegistrationForm();
 
     //click on registration burton
-    click(By.name("login"));
+    clickOnLoginButton();
 
-    // assert Sign aout button
-    Assert.assertTrue(isElementPresent1(By.xpath("//button[.='Sign Out']")));
+    // assert Sign out button
+    Assert.assertTrue(isSignOutButtonPresent());
+  }
+
+  public boolean isSignOutButtonPresent() {
+    return isElementPresent1(By.xpath("//button[.='Sign Out']"));
+  }
+
+  public void clickOnLoginButton() {
+    click(By.name("login"));
   }
 }
