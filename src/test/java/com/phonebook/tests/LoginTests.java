@@ -1,39 +1,45 @@
 package com.phonebook.tests;
 
-import org.openqa.selenium.By;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class LoginTests extends TestBase {
+public class LoginTests extends TestBase{
 
-  public void ensurePrecondition() {
-    if (!isLoginLinkPresent())
-    {
-      driver.findElement(By.xpath("//button[.='Sign Out']")).click();
+    @BeforeMethod
+    public void ensurePrecondition() {
+        if (!app.getUser().isLoginLinkPresent()){
+            // xpath - //a[.='LOGIN']
+            app.getUser().clickOnSignOutButton();
+        }
     }
-  }
 
-  @Test
-  public void newUserRegistrationPisitiveTest () {
+    @Test
+    public void loginPositiveTest() {
+        //click on Login link
+        app.getUser().clickOnLoginLink();
+        //enter email
+        app.getUser().fillLoginRegistrationForm(new User()
+                .setEmail("kr@gmail.com")
+                .setPassword("Kr1234567$"));
+        //click on Registration button
+        app.getUser().clickOnLoginButton();
+        //assert Sign out button is displayed
+        Assert.assertTrue(app.getUser().isSignOutButtonPresent());
+    }
 
-    //click on login link
-    clickOnLoginLink();
+    @Test
+    public void loginNegativeWithoutPasswordTest() {
+        //click on Login link
+        app.getUser().clickOnLoginLink();
+        //enter email
+        app.getUser().fillLoginRegistrationForm(new User()
+                .setEmail("kr@gmail.com"));
+        //click on Registration button
+        app.getUser().clickOnLoginButton();
+        //assert Sign out button is displayed
+        Assert.assertTrue(app.getUser().isAlertPresent());
+    }
 
-    //enter email
-    fillLoginRegistrationForm();
 
-    //click on registration burton
-    clickOnLoginButton();
-
-    // assert Sign out button
-    Assert.assertTrue(isSignOutButtonPresent());
-  }
-
-  public boolean isSignOutButtonPresent() {
-    return isElementPresent1(By.xpath("//button[.='Sign Out']"));
-  }
-
-  public void clickOnLoginButton() {
-    click(By.name("login"));
-  }
 }
