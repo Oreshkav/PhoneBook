@@ -15,7 +15,7 @@ public class AddContactTests extends TestBase{
         app.getUser().clickOnLoginLink();
         app.getUser().fillLoginRegistrationForm(new User()
                 .setEmail("adam2@gm.com")
-                .setPassword("Adam1234567$\""));
+                .setPassword("Adam1234567$"));
         app.getUser().clickOnLoginButton();
     }
 
@@ -26,16 +26,16 @@ public class AddContactTests extends TestBase{
         //  int i = (int) (System.currentTimeMillis() / 1000)%3600;
         //fill in all fields
         app.getContact().fillAddContactForm(new Contact()
-                .setName("Adam2")
-                .setLastname("Adam2")
+                .setName("Petr")
+                .setLastname("PetrB")
                 .setPhone("1234567501")
-                .setEmail("adam2@gm.com")
-                .setAddress("Koblenz1")
-                .setDesc("goalkeeper1"));
+                .setEmail("petr@gm.com")
+                .setAddress("Kharkiv")
+                .setDesc("piece"));
         //click on save button
         app.getContact().clickOnSaveButton();
         //assert contact is added
-        Assert.assertTrue(app.getContact().isContactCreated("Adam2"));
+        Assert.assertTrue(app.getContact().isContactCreated("Petr"));
     }
 
     @AfterMethod

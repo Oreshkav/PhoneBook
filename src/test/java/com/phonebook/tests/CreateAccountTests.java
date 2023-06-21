@@ -21,8 +21,8 @@ public class CreateAccountTests extends TestBase{
         //enter email
         //enter password
         app.getUser().fillLoginRegistrationForm(new User()
-                .setEmail("kr@gmail.com")
-                .setPassword("Kr1234567$"));
+                .setEmail("adam2@gm.com")
+                .setPassword("Adam1234567$"));
         //click on Registration button
         app.getUser().clickOnRegistrationButton();
         //assert warning appears
