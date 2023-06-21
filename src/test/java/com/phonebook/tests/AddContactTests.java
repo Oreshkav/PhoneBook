@@ -14,8 +14,8 @@ public class AddContactTests extends TestBase{
         }
         app.getUser().clickOnLoginLink();
         app.getUser().fillLoginRegistrationForm(new User()
-                .setEmail("kr@gmail.com")
-                .setPassword("Kr1234567$"));
+                .setEmail("adam2@gm.com")
+                .setPassword("Adam1234567$\""));
         app.getUser().clickOnLoginButton();
     }
 
@@ -26,20 +26,20 @@ public class AddContactTests extends TestBase{
         //  int i = (int) (System.currentTimeMillis() / 1000)%3600;
         //fill in all fields
         app.getContact().fillAddContactForm(new Contact()
-                .setName("Karl")
-                .setLastname("Adam")
-                .setPhone("1234567890")
-                .setEmail("adam@gm.com")
-                .setAddress("Koblenz")
-                .setDesc("goalkeeper"));
+                .setName("Adam2")
+                .setLastname("Adam2")
+                .setPhone("1234567501")
+                .setEmail("adam2@gm.com")
+                .setAddress("Koblenz1")
+                .setDesc("goalkeeper1"));
         //click on save button
         app.getContact().clickOnSaveButton();
         //assert contact is added
-        Assert.assertTrue(app.getContact().isContactCreated("Karl"));
+        Assert.assertTrue(app.getContact().isContactCreated("Adam2"));
     }
 
     @AfterMethod
     public void removeContact() {
-//        deleteContact();
+        app.getContact().removeContact();
     }
 }

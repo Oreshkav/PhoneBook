@@ -20,8 +20,8 @@ public class LoginTests extends TestBase{
         app.getUser().clickOnLoginLink();
         //enter email
         app.getUser().fillLoginRegistrationForm(new User()
-                .setEmail("kr@gmail.com")
-                .setPassword("Kr1234567$"));
+                .setEmail("adam2@gm.com")
+                .setPassword("Adam1234567$"));
         //click on Registration button
         app.getUser().clickOnLoginButton();
         //assert Sign out button is displayed
@@ -34,7 +34,7 @@ public class LoginTests extends TestBase{
         app.getUser().clickOnLoginLink();
         //enter email
         app.getUser().fillLoginRegistrationForm(new User()
-                .setEmail("kr@gmail.com"));
+                .setEmail("pol@gmail.com"));
         //click on Registration button
         app.getUser().clickOnLoginButton();
         //assert Sign out button is displayed

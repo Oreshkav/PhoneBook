@@ -2,18 +2,29 @@ package com.phonebook.tests;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.time.Duration;
 
 public class ApplicationManager {
 
+  String browser;
   WebDriver driver;
   UserHelper user;
   ContactHelper contact;
   HomePageHelper homePage;
 
+  public ApplicationManager(String browser) {
+    this.browser = browser;
+  }
+
   public void init() {
       System.err.close();
+      if (browser.equalsIgnoreCase("chrome")) {
+        driver = new ChromeDriver();
+      } else if (browser.equalsIgnoreCase("firefox")) {
+        driver = new FirefoxDriver();
+      }
 
       driver = new ChromeDriver();
       driver.get("https://telranedu.web.app");
@@ -22,10 +33,6 @@ public class ApplicationManager {
       user = new UserHelper(driver);
       contact = new ContactHelper(driver);
       homePage = new HomePageHelper(driver);
-  }
-
-  public WebDriver getDriver() {
-    return driver;
   }
 
   public UserHelper getUser() {
