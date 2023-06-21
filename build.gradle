@@ -23,8 +23,9 @@ task qa (type: Test) {
     if (project.hasProperty('browser')) {
         systemProperty 'browser', "${browser}"
     }
+}
 
-}task qa1 (type: Test) {
+task qa1 (type: Test) {
     useTestNG() {
         suites 'src/test/resources/testng.xml'
     }
