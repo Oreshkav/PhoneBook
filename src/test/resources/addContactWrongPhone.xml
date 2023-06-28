@@ -4,11 +4,11 @@
   <test name="WrongPhone">
     <classes>
 
-      <class name="com.phonebook.tests.AddContactNegativeTests"/>
+      <class name="com.phonebook.tests.AddContactNegativeTests">
 <!--      <methods>-->
-<!--        <include name=".*addContactNegativeFromDataProviderTest.*"></include>;-->
+<!--        <include name=".*addContactNegativeFromDataProviderTest.*"></include>-->
 <!--      </methods>-->
-
+      </class>
     </classes>
   </test>
 </suite>

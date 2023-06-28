@@ -4,6 +4,7 @@ import com.phonebook.fw.ApplicationManager;
 import org.openqa.selenium.remote.Browser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
@@ -24,12 +25,22 @@ public class TestBase {
     logger.info("Start test" + m.getName());
   }
 
-  @AfterMethod
-  public void stopTest( Method m, Object[] p) {
-    logger.info("Stop Test" + m.getName() + " with data: " + Arrays.asList(p));
-    logger.info ("========================================================");
-  }
+//  @AfterMethod
+//  public void stopTest( Method m, Object[] p) {
+//    logger.info("Stop Test" + m.getName() + " with data: " + Arrays.asList(p));
+//    logger.info ("========================================================");
+//  }
 
+  @AfterMethod(alwaysRun = true)
+  public void stopTest(ITestResult result) {
+
+    if (result.isSuccess()) {
+      logger.info("PASSED: " + result.getMethod().getMethodName());
+    } else {
+      logger.error("FAILED: " + result.getMethod().getMethodName() + "Screenshot: " + app.getUser().takeScreenshot());
+    }
+    logger.info("========================================================");
+  }
 
   //    @BeforeMethod
   @BeforeSuite

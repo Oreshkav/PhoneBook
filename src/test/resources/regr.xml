@@ -4,13 +4,20 @@
     <test name="Regression" >
         <classes>
             <class name="com.phonebook.tests.HomePageTests" />
-            <class name="com.phonebook.tests.CreateAccountTests" />
-            <class name="com.phonebook.tests.LoginTests" />
+<!--            <class name="com.phonebook.tests.CreateAccountTests" />-->
+            <class name="com.phonebook.tests.LoginTests" >
 
-<!--            <methods>-->
-<!--                <esclude name =".*Negative.*"> </esclude>-->
-<!--            </methods>-->
-            <class name="com.phonebook.tests.AddContactTests" />
+            <methods>
+                <exclude name =".*Negative.*"> </exclude>
+            </methods>
+            </class>
+
+          <class name="com.phonebook.tests.AddContactTests" >
+            <methods>
+              <exclude name=".*From.*"></exclude>
+            </methods>
+          </class>
+
             <class name="com.phonebook.tests.RemoveContactTests" />
 <!--            <class name="com.phonebook.tests.LoginTests" />-->
 

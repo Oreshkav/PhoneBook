@@ -1,6 +1,15 @@
+*.log
+*.png
+/build/classes/
+/build/generated/
+/build/reports/
+/build/resources/
+/build/tmp/
+
+
 .gradle
-**/build/
-!src/**/build/
+#**/build/
+#!src/**/build/
 
 # Ignore Gradle GUI config
 gradle-app.setting

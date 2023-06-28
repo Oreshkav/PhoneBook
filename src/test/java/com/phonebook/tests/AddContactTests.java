@@ -82,6 +82,18 @@ public class AddContactTests extends TestBase{
         app.getContact().removeContact();
     }
 
+
+  @DataProvider
+  public Iterator<Object[]> addContact() {
+
+    List<Object[]> list = new ArrayList<>();
+    list.add(new Object[]{"Oliver","Kan","1234567890","kan@gm.com","Berlin","goalkeeper"});
+    list.add(new Object[]{"Oliver","Kan","12345678912","kan+1@gm.com","Berlin","goalkeeper"});
+    list.add(new Object[]{"Oliver","Kan","12345678913","kan+2@gm.com","Berlin","goalkeeper"});
+
+    return list.iterator();
+  }
+
   @DataProvider
   public Iterator<Object[]> addContactFromCsvFile() throws IOException {
 
