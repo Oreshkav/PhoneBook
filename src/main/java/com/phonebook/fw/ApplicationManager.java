@@ -1,7 +1,12 @@
-package com.phonebook.tests;
+package com.phonebook.fw;
 
+import com.phonebook.fw.ContactHelper;
+import com.phonebook.fw.HomePageHelper;
+import com.phonebook.fw.UserHelper;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.time.Duration;
@@ -9,7 +14,7 @@ import java.time.Duration;
 public class ApplicationManager {
 
   String browser;
-  WebDriver driver;
+  public WebDriver driver;
   UserHelper user;
   ContactHelper contact;
   HomePageHelper homePage;
@@ -20,16 +25,24 @@ public class ApplicationManager {
 
   public void init() {
       System.err.close();
+
       if (browser.equalsIgnoreCase("chrome")) {
         driver = new ChromeDriver();
       } else if (browser.equalsIgnoreCase("firefox")) {
         driver = new FirefoxDriver();
+      } else if  (browser.equalsIgnoreCase("edge")) {
+//      EdgeOptions options = new EdgeOptions();
+//      options.addArguments("remote-allow-origins=*");
+//      driver = new EdgeDriver(options);
+        driver = new EdgeDriver();
+
       }
 
       driver = new ChromeDriver();
       driver.get("https://telranedu.web.app");
-//        driver.manage().window().maximize();
+      driver.manage().window(); //.maximize();
       driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
       user = new UserHelper(driver);
       contact = new ContactHelper(driver);
       homePage = new HomePageHelper(driver);
@@ -50,5 +63,4 @@ public class ApplicationManager {
   public void stop() {
       driver.quit();
   }
-
 }
